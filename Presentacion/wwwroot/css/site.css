@@ -1,0 +1,285 @@
+/* ===== PALETA DE COLORES FOOD TRUCK ===== */
+:root {
+  --color-principal: #B96F64;      /* Terracota cálido */
+  --color-secundario: #96AFAA;     /* Verde agua suave */
+  --color-acento: #DAB89F;         /* Beige cálido */
+  --color-neutro: #8D8280;         /* Gris cálido */
+  --color-claro: #B3BED5;          /* Lavanda suave */
+  --color-fondo: #f8f5f2;          /* Beige muy claro */
+  --color-texto: #2d2d2d;          /* Gris oscuro para texto */
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* ===== ESTILOS GENERALES ===== */
+body {
+  margin-bottom: 60px;
+  background: linear-gradient(135deg, var(--color-fondo) 0%, #ffffff 100%);
+  color: var(--color-texto);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background: linear-gradient(90deg, var(--color-principal) 0%, var(--color-secundario) 100%) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+  color: white !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  color: rgba(255,255,255,0.9) !important;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: white !important;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 5px;
+}
+
+/* ===== TARJETAS ===== */
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card-header {
+  background: linear-gradient(135deg, var(--color-secundario) 0%, var(--color-claro) 100%);
+  color: white;
+  border-radius: 12px 12px 0 0 !important;
+  font-weight: 600;
+}
+
+/* ===== BOTONES ===== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-principal) 0%, #c77f73 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #c77f73 0%, var(--color-principal) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(185, 111, 100, 0.4);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, var(--color-secundario) 0%, #a5beb9 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #a5beb9 0%, var(--color-secundario) 100%);
+  transform: translateY(-2px);
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, var(--color-acento) 0%, #e4c6ad 100%);
+  border: none;
+  color: var(--color-texto);
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
+}
+
+.btn-secondary {
+  background: var(--color-neutro);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+}
+
+.btn-info {
+  background: var(--color-claro);
+  border: none;
+  color: white;
+  border-radius: 8px;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  border: none;
+  border-radius: 8px;
+}
+
+/* ===== TABLAS ===== */
+.table {
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.table-dark {
+  background: linear-gradient(135deg, var(--color-neutro) 0%, var(--color-principal) 100%);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(150, 175, 170, 0.05);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(150, 175, 170, 0.1);
+}
+
+/* ===== ALERTAS ===== */
+.alert {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.alert-success {
+  background: linear-gradient(135deg, var(--color-secundario) 0%, #a5beb9 100%);
+  color: white;
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+}
+
+.alert-info {
+  background: linear-gradient(135deg, var(--color-claro) 0%, #c2cce0 100%);
+  color: white;
+}
+
+.alert-warning {
+  background: linear-gradient(135deg, var(--color-acento) 0%, #e4c6ad 100%);
+  color: var(--color-texto);
+}
+
+/* ===== BADGES ===== */
+.badge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* ===== FORMULARIOS ===== */
+.form-control {
+  border: 2px solid rgba(150, 175, 170, 0.2);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 0 0.2rem rgba(150, 175, 170, 0.25);
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--color-secundario);
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: linear-gradient(90deg, var(--color-neutro) 0%, var(--color-principal) 100%);
+  color: white;
+  padding: 20px 0;
+}
+
+.footer a {
+  color: rgba(255,255,255,0.8);
+}
+
+.footer a:hover {
+  color: white;
+}
+
+/* ===== PÁGINA PRINCIPAL - TARJETAS DE INICIO ===== */
+.display-4 {
+  color: var(--color-principal);
+  font-weight: bold;
+}
+
+.lead {
+  color: var(--color-neutro);
+}
+
+/* Iconos grandes en las tarjetas */
+.bi {
+  transition: transform 0.3s ease;
+}
+
+.card:hover .bi {
+  transform: scale(1.1);
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* ===== SOMBRAS PERSONALIZADAS ===== */
+.shadow {
+  box-shadow: 0 4px 12px rgba(141, 130, 128, 0.15) !important;
+}
+
+/* ===== ESTILOS RESPONSIVOS ===== */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

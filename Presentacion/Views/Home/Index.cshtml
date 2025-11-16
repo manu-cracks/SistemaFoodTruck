@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4">
+        <i class="bi bi-truck" style="color: var(--color-principal);"></i>
+        Bienvenido al Sistema Food Truck
+    </h1>
+    <p class="lead">Sistema de gestión de pedidos y reservas en línea</p>
+</div>
+
+<div class="row mt-5 g-4">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center p-4">
+                <i class="bi bi-cart-plus" style="font-size: 4rem; color: #96AFAA;"></i>
+                <h3 class="card-title mt-3" style="color: var(--color-principal);">Realizar Pedido</h3>
+                <p class="card-text">Crea un nuevo pedido seleccionando productos del menú</p>
+                <a asp-controller="Pedidos" asp-action="Create" class="btn btn-success btn-lg mt-3">
+                    <i class="bi bi-plus-circle"></i> Nuevo Pedido
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center p-4">
+                <i class="bi bi-list-check" style="font-size: 4rem; color: var(--color-principal);"></i>
+                <h3 class="card-title mt-3" style="color: #96AFAA;">Pedidos Pendientes</h3>
+                <p class="card-text">Gestiona los pedidos pendientes y actualiza sus estados</p>
+                <a asp-controller="Pedidos" asp-action="Pendientes" class="btn btn-primary btn-lg mt-3">
+                    <i class="bi bi-clock-history"></i> Ver Pedidos
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center p-4">
+                <i class="bi bi-menu-button-wide" style="font-size: 4rem; color: #DAB89F;"></i>
+                <h3 class="card-title mt-3" style="color: var(--color-neutro);">Gestión de Menú</h3>
+                <p class="card-text">Administra los productos disponibles en el menú</p>
+                <a asp-controller="Productos" asp-action="Index" class="btn btn-warning btn-lg mt-3">
+                    <i class="bi bi-grid"></i> Ver Productos
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center p-4">
+                <i class="bi bi-graph-up" style="font-size: 4rem; color: #B3BED5;"></i>
+                <h3 class="card-title mt-3" style="color: var(--color-principal);">Todos los Pedidos</h3>
+                <p class="card-text">Visualiza el historial completo de pedidos</p>
+                <a asp-controller="Pedidos" asp-action="Index" class="btn btn-secondary btn-lg mt-3">
+                    <i class="bi bi-archive"></i> Ver Historial
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5">
+    <div class="card" style="background: linear-gradient(135deg, rgba(150, 175, 170, 0.1) 0%, rgba(179, 190, 213, 0.1) 100%);">
+        <div class="card-body">
+            <h4 style="color: var(--color-principal);">
+                <i class="bi bi-info-circle"></i> Instrucciones de Inicio Rápido
+            </h4>
+            <p class="mb-3">¡Tu sistema está listo para usarse! Aquí tienes algunos consejos:</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <h5 style="color: var(--color-secundario);">
+                            <i class="bi bi-1-circle-fill"></i> Explora el Menú
+                        </h5>
+                        <p class="small">Revisa los productos precargados en la sección de Gestión de Menú</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <h5 style="color: var(--color-secundario);">
+                            <i class="bi bi-2-circle-fill"></i> Crea un Pedido
+                        </h5>
+                        <p class="small">Prueba crear tu primer pedido usando el cliente demo</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <h5 style="color: var(--color-secundario);">
+                            <i class="bi bi-3-circle-fill"></i> Gestiona Estados
+                        </h5>
+                        <p class="small">Actualiza los estados de los pedidos desde Pendiente hasta Entregado</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-10px);
+    }
+    
+    .btn {
+        transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+        transform: scale(1.05);
+    }
+</style>

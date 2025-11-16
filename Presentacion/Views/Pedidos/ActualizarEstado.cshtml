@@ -1,0 +1,49 @@
+@model Dominio.Entidades.Pedido
+
+@{
+    ViewData["Title"] = "Actualizar Estado del Pedido";
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"] #@Model.Id</h1>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Cliente</dt>
+                <dd class="col-sm-9">@Model.Cliente?.Nombre</dd>
+
+                <dt class="col-sm-3">Fecha y Hora</dt>
+                <dd class="col-sm-9">@Model.FechaHoraPedido.ToString("dd/MM/yyyy HH:mm")</dd>
+
+                <dt class="col-sm-3">Estado Actual</dt>
+                <dd class="col-sm-9">
+                    <span class="badge bg-warning fs-6">@Model.Estado</span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Cambiar Estado</h5>
+        </div>
+        <div class="card-body">
+            <form asp-action="ActualizarEstado" method="post">
+                <input type="hidden" name="id" value="@Model.Id" />
+                
+                <div class="mb-3">
+                    <label for="nuevoEstado" class="form-label">Nuevo Estado</label>
+                    <select name="nuevoEstado" class="form-select" asp-items="ViewBag.Estados">
+                        <option value="">-- Seleccione un estado --</option>
+                    </select>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">Actualizar Estado</button>
+                    <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

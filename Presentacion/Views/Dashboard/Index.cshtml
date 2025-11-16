@@ -1,0 +1,282 @@
+@model Aplicacion.DTOs.DashboardDto
+
+@{
+    ViewData["Title"] = "Dashboard de Ventas";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>
+            <i class="bi bi-graph-up-arrow" style="color: var(--color-principal);"></i>
+            Dashboard de Ventas
+        </h1>
+        <small class="text-muted">Basado en pedidos entregados</small>
+    </div>
+
+    @if (Model.TotalPedidosEntregados == 0)
+    {
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i>
+            No hay pedidos entregados aún. Las estadísticas se mostrarán cuando haya pedidos completados.
+        </div>
+    }
+    else
+    {
+        <!-- Tarjetas de Estadísticas Generales -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-cart-check" style="font-size: 2.5rem; color: var(--color-secundario);"></i>
+                        <h3 class="mt-2" style="color: var(--color-principal);">@Model.TotalPedidosEntregados</h3>
+                        <p class="text-muted mb-0">Pedidos Entregados</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-cash-coin" style="font-size: 2.5rem; color: var(--color-principal);"></i>
+                        <h3 class="mt-2" style="color: var(--color-secundario);">S/ @Model.TotalVentas.ToString("N2")</h3>
+                        <p class="text-muted mb-0">Ventas Totales</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-graph-up" style="font-size: 2.5rem; color: var(--color-acento);"></i>
+                        <h3 class="mt-2" style="color: var(--color-neutro);">S/ @Model.PromedioVentaPorPedido.ToString("N2")</h3>
+                        <p class="text-muted mb-0">Promedio por Pedido</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-box-seam" style="font-size: 2.5rem; color: var(--color-claro);"></i>
+                        <h3 class="mt-2" style="color: var(--color-principal);">@Model.TotalProductosVendidos</h3>
+                        <p class="text-muted mb-0">Productos Vendidos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estadísticas por Período -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="bi bi-calendar-range"></i> Ventas por Período</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <h6 class="text-muted">Hoy</h6>
+                                <p class="mb-1"><strong>@Model.PedidosHoy</strong> pedidos</p>
+                                <p class="mb-0" style="color: var(--color-principal); font-size: 1.2rem;">
+                                    S/ @Model.VentasHoy.ToString("N2")
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <h6 class="text-muted">Esta Semana</h6>
+                                <p class="mb-1"><strong>@Model.PedidosEstaSemana</strong> pedidos</p>
+                                <p class="mb-0" style="color: var(--color-secundario); font-size: 1.2rem;">
+                                    S/ @Model.VentasEstaSemana.ToString("N2")
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <h6 class="text-muted">Este Mes</h6>
+                                <p class="mb-1"><strong>@Model.PedidosEsteMes</strong> pedidos</p>
+                                <p class="mb-0" style="color: var(--color-acento); font-size: 1.2rem;">
+                                    S/ @Model.VentasEsteMes.ToString("N2")
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Productos Más Vendidos -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="bi bi-trophy"></i> Top 10 Productos Más Vendidos</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Producto</th>
+                                        <th>Categoría</th>
+                                        <th class="text-center">Cantidad</th>
+                                        <th class="text-end">Ingresos</th>
+                                        <th class="text-center">Pedidos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < Model.ProductosMasVendidos.Count; i++)
+                                    {
+                                        var producto = Model.ProductosMasVendidos[i];
+                                        var badgeColor = i < 3 ? (i == 0 ? "warning" : i == 1 ? "secondary" : "danger") : "info";
+                                        <tr>
+                                            <td>
+                                                <span class="badge bg-@badgeColor">@(i + 1)</span>
+                                            </td>
+                                            <td>
+                                                <strong>@producto.NombreProducto</strong>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-light text-dark">@producto.Categoria</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="badge" style="background-color: var(--color-secundario);">
+                                                    @producto.TotalVendido unidades
+                                                </span>
+                                            </td>
+                                            <td class="text-end">
+                                                <strong style="color: var(--color-principal);">
+                                                    S/ @producto.TotalIngresos.ToString("N2")
+                                                </strong>
+                                            </td>
+                                            <td class="text-center">
+                                                @producto.NumeroPedidos
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Gráfico de barras simple -->
+                        <div class="mt-4">
+                            <h6 class="mb-3">Visualización por Cantidad Vendida</h6>
+                            @foreach (var producto in Model.ProductosMasVendidos)
+                            {
+                                var porcentaje = Model.ProductosMasVendidos.Max(p => p.TotalVendido) > 0
+                                    ? (double)producto.TotalVendido / Model.ProductosMasVendidos.Max(p => p.TotalVendido) * 100
+                                    : 0;
+                                <div class="mb-2">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <small><strong>@producto.NombreProducto</strong></small>
+                                        <small class="text-muted">@producto.TotalVendido unidades</small>
+                                    </div>
+                                    <div class="progress" style="height: 25px;">
+                                        <div class="progress-bar" 
+                                             role="progressbar" 
+                                             style="width: @porcentaje%; background-color: var(--color-principal);"
+                                             aria-valuenow="@porcentaje" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100">
+                                            @porcentaje.ToString("F1")%
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ventas por Categoría -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="bi bi-pie-chart"></i> Ventas por Categoría</h5>
+                    </div>
+                    <div class="card-body">
+                        @if (Model.VentasPorCategoria.Any())
+                        {
+                            var totalCategorias = Model.VentasPorCategoria.Sum(c => c.Value);
+                            var colores = new[] { "var(--color-principal)", "var(--color-secundario)", "var(--color-acento)", "var(--color-claro)", "var(--color-neutro)" };
+                            var colorIndex = 0;
+
+                            <div class="list-group">
+                                @foreach (var categoria in Model.VentasPorCategoria.OrderByDescending(c => c.Value))
+                                {
+                                    var porcentaje = totalCategorias > 0 ? (categoria.Value / totalCategorias * 100) : 0;
+                                    var color = colores[colorIndex % colores.Length];
+                                    colorIndex++;
+
+                                    <div class="list-group-item">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <strong>@categoria.Key</strong>
+                                            <span class="badge" style="background-color: @color;">
+                                                @porcentaje.ToString("F1")%
+                                            </span>
+                                        </div>
+                                        <p class="mb-1 text-muted small">S/ @categoria.Value.ToString("N2")</p>
+                                        <div class="progress" style="height: 10px;">
+                                            <div class="progress-bar" 
+                                                 role="progressbar" 
+                                                 style="width: @porcentaje%; background-color: @color;"
+                                                 aria-valuenow="@porcentaje" 
+                                                 aria-valuemin="0" 
+                                                 aria-valuemax="100">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <p class="text-muted">No hay datos de categorías disponibles.</p>
+                        }
+                    </div>
+                </div>
+
+                <!-- Información Adicional -->
+                <div class="card mt-3" style="background: linear-gradient(135deg, rgba(150, 175, 170, 0.1) 0%, rgba(179, 190, 213, 0.1) 100%);">
+                    <div class="card-body">
+                        <h6 style="color: var(--color-principal);">
+                            <i class="bi bi-info-circle"></i> Información
+                        </h6>
+                        <p class="small mb-2">
+                            <i class="bi bi-check-circle text-success"></i>
+                            Solo se cuentan pedidos <strong>Entregados</strong>
+                        </p>
+                        <p class="small mb-2">
+                            <i class="bi bi-graph-up text-info"></i>
+                            Actualizado en tiempo real
+                        </p>
+                        <p class="small mb-0">
+                            <i class="bi bi-calendar text-warning"></i>
+                            Período completo de ventas
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .progress {
+        border-radius: 10px;
+    }
+    
+    .progress-bar {
+        border-radius: 10px;
+        transition: width 1s ease;
+    }
+    
+    .card {
+        transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .list-group-item {
+        border-left: 4px solid var(--color-principal);
+    }
+</style>

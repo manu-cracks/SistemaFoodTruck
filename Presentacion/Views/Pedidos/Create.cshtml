@@ -1,0 +1,75 @@
+@model Presentacion.Controllers.CrearPedidoViewModel
+@using Dominio.Entidades
+
+@{
+    ViewData["Title"] = "Crear Pedido";
+    var productos = ViewBag.Productos as List<Producto>;
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+                <div class="mb-3">
+                    <label for="ClienteId" class="form-label">Cliente</label>
+                    <select asp-for="ClienteId" class="form-select" asp-items="ViewBag.Clientes">
+                        <option value="">-- Seleccione un cliente --</option>
+                    </select>
+                    <span asp-validation-for="ClienteId" class="text-danger"></span>
+                </div>
+
+                <h4 class="mt-4">Productos</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (productos != null)
+                            {
+                                for (int i = 0; i < productos.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @productos[i].Nombre
+                                            <br />
+                                            <small class="text-muted">@productos[i].Descripcion</small>
+                                            <input type="hidden" name="Detalles[@i].ProductoId" value="@productos[i].Id" />
+                                        </td>
+                                        <td>S/ @productos[i].Precio.ToString("F2")</td>
+                                        <td>
+                                            <input type="number" 
+                                                   name="Detalles[@i].Cantidad" 
+                                                   class="form-control" 
+                                                   min="0" 
+                                                   max="99" 
+                                                   value="0" 
+                                                   style="width: 100px;" />
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success">Crear Pedido</button>
+                    <a asp-action="Pendientes" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

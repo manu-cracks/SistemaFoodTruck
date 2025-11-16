@@ -1,0 +1,83 @@
+@model IEnumerable<Aplicacion.DTOs.PedidoDto>
+
+@{
+    ViewData["Title"] = "Pedidos Pendientes";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>@ViewData["Title"]</h1>
+        <a asp-action="Create" class="btn btn-success">
+            <i class="bi bi-cart-plus"></i> Nuevo Pedido
+        </a>
+    </div>
+
+    @if (TempData["Mensaje"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Mensaje"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="card">
+        <div class="card-body">
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info">
+                    No hay pedidos pendientes en este momento.
+                </div>
+            }
+            else
+            {
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Fecha/Hora</th>
+                            <th>Estado</th>
+                            <th>Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pedido in Model)
+                        {
+                            <tr>
+                                <td>@pedido.Id</td>
+                                <td>@pedido.NombreCliente</td>
+                                <td>@pedido.FechaHoraPedido.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>
+                                    <span class="badge bg-@ObtenerColorEstado(pedido.Estado)">
+                                        @pedido.Estado
+                                    </span>
+                                </td>
+                                <td>S/ @pedido.Total.ToString("F2")</td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@pedido.Id" class="btn btn-sm btn-info">Ver</a>
+                                    <a asp-action="ActualizarEstado" asp-route-id="@pedido.Id" class="btn btn-sm btn-warning">Actualizar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>
+
+@functions {
+    string ObtenerColorEstado(Dominio.Entidades.PedidoEstado estado)
+    {
+        return estado switch
+        {
+            Dominio.Entidades.PedidoEstado.Pendiente => "warning",
+            Dominio.Entidades.PedidoEstado.EnPreparacion => "info",
+            Dominio.Entidades.PedidoEstado.ListoParaRecoger => "primary",
+            Dominio.Entidades.PedidoEstado.Entregado => "success",
+            Dominio.Entidades.PedidoEstado.Cancelado => "danger",
+            _ => "secondary"
+        };
+    }
+}
