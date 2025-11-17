@@ -161,23 +161,23 @@ dotnet ef database update --project Infraestructura --startup-project Presentaci
 2. Presionar **F5** o hacer clic en el botón de ejecución
 3. La aplicación se abrirá en el navegador (por defecto en `https://localhost:xxxxx`)
 
-## ?? Datos de Prueba (Seed Data)
+## Datos de Prueba (Seed Data)
 
 La base de datos se crea con datos iniciales:
 
 **Productos:**
-- Hamburguesa Clásica - $8.99
-- Hot Dog Premium - $5.99
+- Hamburguesa Clásica - s/8.99
+- Hot Dog Premium - s/5.99
 - Papas Fritas - $3.50
-- Refresco - $2.00
-- Taco Mexicano - $3.99
+- Refresco - s/2.00
+- Taco Mexicano - s/3.99
 
 **Cliente de Ejemplo:**
 - Nombre: Cliente Demo
 - Email: demo@foodtruck.com
 - Teléfono: 555-1234
 
-## ?? Uso del Sistema
+##  Uso del Sistema
 
 ### Para Clientes (Realizar Pedidos)
 1. Ir a **"Realizar Pedido"** desde la página principal
@@ -205,7 +205,7 @@ La base de datos se crea con datos iniciales:
    - Entregado
    - Cancelado
 
-## ?? Estructura de Casos de Uso (CQRS)
+##  Estructura de Casos de Uso (CQRS)
 
 ### Commands (Modifican el Estado)
 - `CrearProductoCommand` - Crear nuevo producto
@@ -217,7 +217,7 @@ La base de datos se crea con datos iniciales:
 - `ObtenerProductoPorIdQuery` - Obtener producto específico
 - `ObtenerPedidosPendientesQuery` - Listar pedidos pendientes
 
-## ?? Validaciones Implementadas
+##  Validaciones Implementadas
 
 ### Producto
 - Nombre: Obligatorio, máximo 100 caracteres
@@ -230,7 +230,7 @@ La base de datos se crea con datos iniciales:
 - Detalles: Al menos un producto
 - Cantidad: Mayor a 0 por producto
 
-## ?? Solución de Problemas
+##  Solución de Problemas
 
 ### Error: "No se puede conectar a la base de datos"
 - Verificar que SQL Server LocalDB o Express esté instalado
@@ -244,21 +244,21 @@ La base de datos se crea con datos iniciales:
 - Verificar que todos los servicios estén registrados en `Program.cs`
 - Verificar referencias de proyecto
 
-## ?? Notas Adicionales
+##  Notas Adicionales
 
 - La aplicación utiliza **SQL Server LocalDB** por defecto (incluido con Visual Studio)
 - Los pedidos se crean con transacciones para garantizar integridad de datos
 - La interfaz está diseñada con **Bootstrap 5** para ser responsiva
 - Todas las operaciones de base de datos son **asíncronas**
 
-## ????? Autor
+##  Autor
 
 Sistema desarrollado siguiendo principios de Clean Architecture y mejores prácticas de desarrollo en .NET.
 
-## ?? Licencia
+##  Licencia
 
 Este proyecto es de uso educativo y demostrativo.
 
 ---
 
-**¡Gracias por usar el Sistema de Gestión Food Truck!** ??????
+**¡Gracias por usar el Sistema de Gestión Food Truck!** 
