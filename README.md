@@ -1,14 +1,14 @@
-# ?? Sistema de GestiÛn Food Truck
+#  Sistema de Gesti√≥n Food Truck
 
-Sistema de gestiÛn de pedidos y reservas en lÌnea para un negocio Food Truck, desarrollado con **Clean Architecture** en **.NET 9** y **ASP.NET Core MVC**.
+Sistema de gesti√≥n de pedidos y reservas en l√≠nea para un negocio Food Truck, desarrollado con **Clean Architecture** en **.NET 9** y **ASP.NET Core MVC**.
 
-## ?? DescripciÛn del Proyecto
+## ?? Descripci√≥n del Proyecto
 
-Este proyecto implementa un sistema completo de gestiÛn para un Food Truck que permite:
-- **GestiÛn de Men˙**: Crear, editar y eliminar productos
-- **Procesamiento de Pedidos**: Los clientes pueden realizar pedidos en lÌnea
-- **GestiÛn de Estados**: Actualizar el estado de los pedidos (Pendiente, En PreparaciÛn, Listo para Recoger, Entregado, Cancelado)
-- **VisualizaciÛn**: Interfaz administrativa para gestionar pedidos pendientes
+Este proyecto implementa un sistema completo de gesti√≥n para un Food Truck que permite:
+- **Gesti√≥n de Men√∫**: Crear, editar y eliminar productos
+- **Procesamiento de Pedidos**: Los clientes pueden realizar pedidos en l√≠nea
+- **Gesti√≥n de Estados**: Actualizar el estado de los pedidos (Pendiente, En Preparaci√≥n, Listo para Recoger, Entregado, Cancelado)
+- **Visualizaci√≥n**: Interfaz administrativa para gestionar pedidos pendientes
 
 ## ??? Arquitectura del Proyecto
 
@@ -16,41 +16,41 @@ El proyecto sigue los principios de **Clean Architecture** dividido en 4 capas:
 
 ```
 SistemasResevaComida/
-?
-??? Dominio/                    # Capa de Dominio (Entidades y Reglas de Negocio)
-?   ??? Entidades/
-?       ??? Producto.cs
-?       ??? Cliente.cs
-?       ??? Pedido.cs
-?       ??? DetallePedido.cs
-?       ??? PedidoEstado.cs
-?
-??? Aplicacion/                 # Capa de AplicaciÛn (Casos de Uso - CQRS)
-?   ??? Contratos/
-?   ?   ??? Persistencia/       # Interfaces de Repositorios
-?   ??? DTOs/                   # Data Transfer Objects
-?   ??? Features/               # Casos de Uso (Commands y Queries)
-?       ??? Productos/
-?       ?   ??? Commands/
-?       ?   ??? Queries/
-?       ??? Pedidos/
-?           ??? Commands/
-?           ??? Queries/
-?
-??? Infraestructura/            # Capa de Infraestructura (Implementaciones)
-?   ??? Persistencia/
-?   ?   ??? FoodTruckDbContext.cs
-?   ??? Repositorios/
-?       ??? ProductoRepository.cs
-?       ??? ClienteRepository.cs
-?       ??? PedidoRepository.cs
-?       ??? UnitOfWork.cs
-?
-??? Presentacion/               # Capa de PresentaciÛn (ASP.NET Core MVC)
-    ??? Controllers/
-    ?   ??? ProductosController.cs
-    ?   ??? PedidosController.cs
-    ??? Views/
+
+ Dominio/                    # Capa de Dominio (Entidades y Reglas de Negocio)
+    Entidades/
+        Producto.cs
+        Cliente.cs
+       Pedido.cs
+       DetallePedido.cs
+       PedidoEstado.cs
+
+ Aplicacion/                 # Capa de Aplicaci√≥n (Casos de Uso - CQRS)
+    Contratos/
+       Persistencia/       # Interfaces de Repositorios
+    DTOs/                   # Data Transfer Objects
+    Features/               # Casos de Uso (Commands y Queries)
+        Productos/
+           Commands/
+           Queries/
+       Pedidos/
+            Commands/
+           Queries/
+
+ Infraestructura/            # Capa de Infraestructura (Implementaciones)
+    Persistencia/
+      FoodTruckDbContext.cs
+    Repositorios/
+       ProductoRepository.cs
+      ClienteRepository.cs
+       PedidoRepository.cs
+       UnitOfWork.cs
+
+ Presentacion/               # Capa de Presentaci√≥n (ASP.NET Core MVC)
+     Controllers/
+       ProductosController.cs
+       PedidosController.cs
+     Views/
         ??? Productos/
         ??? Pedidos/
 ```
@@ -58,26 +58,26 @@ SistemasResevaComida/
 ## ?? Principios de Clean Architecture Aplicados
 
 ### Reglas de Dependencia
-- ? **Dominio**: No tiene dependencias de ninguna otra capa
-- ? **Aplicacion**: Solo depende de **Dominio**
-- ? **Infraestructura**: Depende de **Aplicacion** (implementa las interfaces)
-- ? **Presentacion**: Depende de **Aplicacion** e **Infraestructura**
+-  **Dominio**: No tiene dependencias de ninguna otra capa
+-  **Aplicacion**: Solo depende de **Dominio**
+-  **Infraestructura**: Depende de **Aplicacion** (implementa las interfaces)
+-  **Presentacion**: Depende de **Aplicacion** e **Infraestructura**
 
 ### Patrones Implementados
 - **CQRS** (Command Query Responsibility Segregation) con **MediatR**
-- **Repository Pattern** para abstracciÛn de acceso a datos
+- **Repository Pattern** para abstracci√≥n de acceso a datos
 - **Unit of Work** para manejo de transacciones
-- **Dependency Injection** para inversiÛn de control
+- **Dependency Injection** para inversi√≥n de control
 - **DTOs** para transferencia de datos entre capas
 
-## ??? TecnologÌas Utilizadas
+## ??? Tecnolog√≠as Utilizadas
 
 - **.NET 9**
 - **ASP.NET Core MVC 9**
 - **Entity Framework Core 9.0.11**
 - **SQL Server Express / LocalDB**
-- **MediatR 9.0.0** (PatrÛn CQRS)
-- **FluentValidation 12.1.0** (ValidaciÛn de Comandos)
+- **MediatR 9.0.0** (Patr√≥n CQRS)
+- **FluentValidation 12.1.0** (Validaci√≥n de Comandos)
 - **Bootstrap 5** (Interfaz de Usuario)
 
 ## ?? Paquetes NuGet Instalados
@@ -102,7 +102,7 @@ SistemasResevaComida/
 <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.11" />
 ```
 
-## ?? Instrucciones de InstalaciÛn y EjecuciÛn
+## ?? Instrucciones de Instalaci√≥n y Ejecuci√≥n
 
 ### Prerequisitos
 - Visual Studio 2022 o superior
@@ -111,19 +111,19 @@ SistemasResevaComida/
 
 ### Paso 1: Clonar o Descargar el Proyecto
 ```bash
-# Si est· en un repositorio Git
+# Si est√° en un repositorio Git
 git clone <url-del-repositorio>
 cd SistemasResevaComida
 ```
 
 ### Paso 2: Restaurar Paquetes NuGet
-Abrir la soluciÛn en Visual Studio y ejecutar:
+Abrir la soluci√≥n en Visual Studio y ejecutar:
 ```bash
 dotnet restore
 ```
 
-### Paso 3: Configurar la Cadena de ConexiÛn
-El archivo `Presentacion/appsettings.json` ya est· configurado con:
+### Paso 3: Configurar la Cadena de Conexi√≥n
+El archivo `Presentacion/appsettings.json` ya est√° configurado con:
 ```json
 {
   "ConnectionStrings": {
@@ -139,7 +139,7 @@ Si usas SQL Server Express, modifica la cadena a:
 
 ### Paso 4: Crear la Base de Datos (MIGRACIONES)
 
-#### OpciÛn A: Usando Package Manager Console (Recomendado)
+#### Opci√≥n A: Usando Package Manager Console (Recomendado)
 1. En Visual Studio, ir a **Tools ? NuGet Package Manager ? Package Manager Console**
 2. Seleccionar el proyecto **Infraestructura** en el dropdown "Default project"
 3. Ejecutar los siguientes comandos:
@@ -149,24 +149,24 @@ Add-Migration InitialCreate -Context FoodTruckDbContext
 Update-Database -Context FoodTruckDbContext
 ```
 
-#### OpciÛn B: Usando .NET CLI
-Desde la carpeta raÌz del proyecto:
+#### Opci√≥n B: Usando .NET CLI
+Desde la carpeta ra√≠z del proyecto:
 ```bash
 dotnet ef migrations add InitialCreate --project Infraestructura --startup-project Presentacion --context FoodTruckDbContext
 dotnet ef database update --project Infraestructura --startup-project Presentacion --context FoodTruckDbContext
 ```
 
-### Paso 5: Ejecutar la AplicaciÛn
+### Paso 5: Ejecutar la Aplicaci√≥n
 1. Configurar **Presentacion** como proyecto de inicio
-2. Presionar **F5** o hacer clic en el botÛn de ejecuciÛn
-3. La aplicaciÛn se abrir· en el navegador (por defecto en `https://localhost:xxxxx`)
+2. Presionar **F5** o hacer clic en el bot√≥n de ejecuci√≥n
+3. La aplicaci√≥n se abrir√° en el navegador (por defecto en `https://localhost:xxxxx`)
 
 ## ?? Datos de Prueba (Seed Data)
 
 La base de datos se crea con datos iniciales:
 
 **Productos:**
-- Hamburguesa Cl·sica - $8.99
+- Hamburguesa Cl√°sica - $8.99
 - Hot Dog Premium - $5.99
 - Papas Fritas - $3.50
 - Refresco - $2.00
@@ -175,32 +175,32 @@ La base de datos se crea con datos iniciales:
 **Cliente de Ejemplo:**
 - Nombre: Cliente Demo
 - Email: demo@foodtruck.com
-- TelÈfono: 555-1234
+- Tel√©fono: 555-1234
 
 ## ?? Uso del Sistema
 
 ### Para Clientes (Realizar Pedidos)
-1. Ir a **"Realizar Pedido"** desde la p·gina principal
+1. Ir a **"Realizar Pedido"** desde la p√°gina principal
 2. Seleccionar un cliente
 3. Elegir productos y cantidades
 4. Hacer clic en **"Crear Pedido"**
 
 ### Para Administradores
 
-#### GestiÛn de Productos
-1. Ir a **"GestiÛn de Men˙"**
+#### Gesti√≥n de Productos
+1. Ir a **"Gesti√≥n de Men√∫"**
 2. Opciones disponibles:
    - Crear nuevo producto
    - Editar producto existente
    - Eliminar producto
    - Ver detalles del producto
 
-#### GestiÛn de Pedidos
+#### Gesti√≥n de Pedidos
 1. Ir a **"Pedidos Pendientes"**
 2. Ver lista de pedidos activos
 3. Actualizar estado de pedidos:
    - Pendiente
-   - En PreparaciÛn
+   - En Preparaci√≥n
    - Listo para Recoger
    - Entregado
    - Cancelado
@@ -210,50 +210,50 @@ La base de datos se crea con datos iniciales:
 ### Commands (Modifican el Estado)
 - `CrearProductoCommand` - Crear nuevo producto
 - `ActualizarProductoCommand` - Actualizar producto existente
-- `CrearPedidoCommand` - Crear pedido con transacciÛn
+- `CrearPedidoCommand` - Crear pedido con transacci√≥n
 - `ActualizarEstadoPedidoCommand` - Cambiar estado del pedido
 
 ### Queries (Solo Lectura)
-- `ObtenerProductoPorIdQuery` - Obtener producto especÌfico
+- `ObtenerProductoPorIdQuery` - Obtener producto espec√≠fico
 - `ObtenerPedidosPendientesQuery` - Listar pedidos pendientes
 
 ## ?? Validaciones Implementadas
 
 ### Producto
-- Nombre: Obligatorio, m·ximo 100 caracteres
+- Nombre: Obligatorio, m√°ximo 100 caracteres
 - Precio: Mayor a 0
-- DescripciÛn: M·ximo 500 caracteres (opcional)
-- CategorÌa: M·ximo 50 caracteres (opcional)
+- Descripci√≥n: M√°ximo 500 caracteres (opcional)
+- Categor√≠a: M√°ximo 50 caracteres (opcional)
 
 ### Pedido
-- ClienteId: Debe ser v·lido y existir
+- ClienteId: Debe ser v√°lido y existir
 - Detalles: Al menos un producto
 - Cantidad: Mayor a 0 por producto
 
-## ?? SoluciÛn de Problemas
+## ?? Soluci√≥n de Problemas
 
 ### Error: "No se puede conectar a la base de datos"
-- Verificar que SQL Server LocalDB o Express estÈ instalado
-- Verificar la cadena de conexiÛn en `appsettings.json`
+- Verificar que SQL Server LocalDB o Express est√© instalado
+- Verificar la cadena de conexi√≥n en `appsettings.json`
 - Ejecutar `sqllocaldb info` para verificar instancias disponibles
 
 ### Error: "Tabla no existe"
 - Asegurarse de haber ejecutado las migraciones: `Update-Database`
 
 ### Error: "No se puede resolver el servicio..."
-- Verificar que todos los servicios estÈn registrados en `Program.cs`
+- Verificar que todos los servicios est√©n registrados en `Program.cs`
 - Verificar referencias de proyecto
 
 ## ?? Notas Adicionales
 
-- La aplicaciÛn utiliza **SQL Server LocalDB** por defecto (incluido con Visual Studio)
+- La aplicaci√≥n utiliza **SQL Server LocalDB** por defecto (incluido con Visual Studio)
 - Los pedidos se crean con transacciones para garantizar integridad de datos
-- La interfaz est· diseÒada con **Bootstrap 5** para ser responsiva
-- Todas las operaciones de base de datos son **asÌncronas**
+- La interfaz est√° dise√±ada con **Bootstrap 5** para ser responsiva
+- Todas las operaciones de base de datos son **as√≠ncronas**
 
 ## ????? Autor
 
-Sistema desarrollado siguiendo principios de Clean Architecture y mejores pr·cticas de desarrollo en .NET.
+Sistema desarrollado siguiendo principios de Clean Architecture y mejores pr√°cticas de desarrollo en .NET.
 
 ## ?? Licencia
 
@@ -261,4 +261,4 @@ Este proyecto es de uso educativo y demostrativo.
 
 ---
 
-**°Gracias por usar el Sistema de GestiÛn Food Truck!** ??????
+**¬°Gracias por usar el Sistema de Gesti√≥n Food Truck!** ??????
