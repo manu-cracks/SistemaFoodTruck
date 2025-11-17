@@ -2,7 +2,7 @@
 
 Sistema de gestión de pedidos y reservas en línea para un negocio Food Truck, desarrollado con **Clean Architecture** en **.NET 9** y **ASP.NET Core MVC**.
 
-## ?? Descripción del Proyecto
+##  Descripción del Proyecto
 
 Este proyecto implementa un sistema completo de gestión para un Food Truck que permite:
 - **Gestión de Menú**: Crear, editar y eliminar productos
@@ -10,7 +10,7 @@ Este proyecto implementa un sistema completo de gestión para un Food Truck que 
 - **Gestión de Estados**: Actualizar el estado de los pedidos (Pendiente, En Preparación, Listo para Recoger, Entregado, Cancelado)
 - **Visualización**: Interfaz administrativa para gestionar pedidos pendientes
 
-## ??? Arquitectura del Proyecto
+##  Arquitectura del Proyecto
 
 El proyecto sigue los principios de **Clean Architecture** dividido en 4 capas:
 
@@ -55,7 +55,7 @@ SistemasResevaComida/
         ??? Pedidos/
 ```
 
-## ?? Principios de Clean Architecture Aplicados
+##  Principios de Clean Architecture Aplicados
 
 ### Reglas de Dependencia
 -  **Dominio**: No tiene dependencias de ninguna otra capa
@@ -70,7 +70,7 @@ SistemasResevaComida/
 - **Dependency Injection** para inversión de control
 - **DTOs** para transferencia de datos entre capas
 
-## ??? Tecnologías Utilizadas
+##  Tecnologías Utilizadas
 
 - **.NET 9**
 - **ASP.NET Core MVC 9**
@@ -80,7 +80,7 @@ SistemasResevaComida/
 - **FluentValidation 12.1.0** (Validación de Comandos)
 - **Bootstrap 5** (Interfaz de Usuario)
 
-## ?? Paquetes NuGet Instalados
+##  Paquetes NuGet Instalados
 
 ### Aplicacion
 ```xml
@@ -102,7 +102,7 @@ SistemasResevaComida/
 <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.11" />
 ```
 
-## ?? Instrucciones de Instalación y Ejecución
+##  Instrucciones de Instalación y Ejecución
 
 ### Prerequisitos
 - Visual Studio 2022 o superior
